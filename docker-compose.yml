@@ -1,0 +1,27 @@
+version: '2'
+services:
+  postgres14:
+    image: postgres:14.2
+    user: root
+    environment:
+      - POSTGRES_PASSWORD=4dm1n2022
+      - POSTGRES_USER=adminerp
+      - POSTGRES_DB=postgres
+    restart: always # run as a service 
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+
+  odoo15:
+    image: odoo:15.0
+    user: root
+    depends_on:
+      - postgres14
+    ports:
+      - "5005:8069"
+      - "5004:8072" # livechat
+    tty: true
+    command: -- --dev=reload
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./etc:/etc/odoo
+    restart: always # run as a service  
