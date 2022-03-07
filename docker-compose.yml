@@ -4,7 +4,7 @@ services:
     image: postgres:14.2
     user: root
     environment:
-      - POSTGRES_USER=4dm1n2022
+      - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo15@adminerp
       - POSTGRES_DB=postgres
     restart: always # run as a service
@@ -17,13 +17,13 @@ services:
     depends_on:
       - db
     ports:
-      - "10015:8069"
-      - "20015:8072" # live chat
+      - "5005:8069"
+      - "5004:8072" # live chat
     tty: true
     command: --
     environment:
       - HOST=db
-      - USER=4dm1n2022
+      - USER=odoo
       - PASSWORD=odoo15@adminerp
     volumes:
       - ./addons:/mnt/extra-addons

@@ -4,6 +4,7 @@ Change the folder permission to make sure that the container is able to access t
 ```
 $ sudo chmod -R 777 addons
 $ sudo chmod -R 777 etc 
+$ mkdir -p postgresql
 $ sudo chmod -R 777 postgresql
 ```
 
